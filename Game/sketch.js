@@ -1,31 +1,32 @@
 
-var person;
 var floor;
+var person;
+var spikes;
 var floorsdict = [];
-
-
+var spikesdict =[];
 
 
 function setup() {
-  createCanvas(640, 480);
-  floor = new floor();
-  floorsdict.push(floor);
+  createCanvas(1920, 1080);
+  floorsdict.push(new floor());
 }
 
 function draw() {
   background(0);
   fill(255);
   rect(0, 3*height/5, width, height);
-  for (i = floorsdict.length; i >= 0; i--) {
+  for (var i = floorsdict.length; i >= 0; i--) {
     if (floor.onscreen() == false) {
-      floorsdict.push(floor);
+      floorsdict.push(new floor());
 
     }
+
+    floorsdict[i].update();
+    floorsdict[i].show();
   }
 
 
-  floor.show();
-  floor.update();
+
   person.update();
   person.show();
 

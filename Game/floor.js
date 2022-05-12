@@ -9,10 +9,10 @@ function floor() {
 
 
   this.forward = function(){
-    this.speed += this.forward1
+    this.x += this.forward1
   }
   this.backward = function(){
-    this.speed += this.backward1
+    this.x += this.backward1
   }
   this.hits_top = function(person) {
     if (person.y < this.y) {
@@ -20,7 +20,7 @@ function floor() {
       }
     else {
     return false;
-    }
+    };
   };
 
   this.show = function() {
@@ -31,7 +31,7 @@ function floor() {
   this.update = function() {
     this.x -= this.speed;
     this.width -= this.speed;
-  }
+  };
 
   this.onscreen = function() {
     if (this.x < 0) {
