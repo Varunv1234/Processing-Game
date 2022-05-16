@@ -30,7 +30,10 @@ function draw() {
   person.update();
   person.show();
 
-  
+  if (person.alive() == true || spikes.hitperson() == true) {
+    textSize(100);
+    text('Game Over', height/2, width/2);
+  }
     
 }
 

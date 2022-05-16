@@ -10,17 +10,22 @@ function floor() {
 
   this.forward = function(){
     this.x += this.forward1
-  }
+  };
+  
   this.backward = function(){
     this.x += this.backward1
-  }
-  this.hits_top = function(person) {
-    if (person.y < this.y) {
-      return true;
+  };
+ 
+
+   this.hitsperson = function(){
+    if (this.x <= person.x && this.var2 >= person.x){
+      if (this.y <= person.y && this.y + 32 >= person.y) {
+        return true;
       }
     else {
-    return false;
+      return false;
     };
+  };
   };
 
   this.show = function() {

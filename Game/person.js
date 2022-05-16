@@ -4,6 +4,7 @@ function person() {
   this.drop = 12
   this.lift = -12;
   this.velocity = 0;
+  
   if (this.y >= floor.y && floor.x <= this.x && this.x <= floor.x + floor.width){
     this.gravity = 0.7;
   }
@@ -23,7 +24,7 @@ function person() {
     this.velocity += this.drop
   }
   this.alive = function() {
-    if (this.y <= floor.y) {
+    if (this.y >= height) {
       return false
     }
     else {
