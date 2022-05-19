@@ -3,7 +3,7 @@ function platform(){
 	this.height = 5;
 	this.speed = floor.speed + 2
 	this.x = width;
-	this.y = random(height/3,height/2);
+	this.y = Math.random(height/3,height/2);
 	
 	this.var2 = this.x + this.width;
 

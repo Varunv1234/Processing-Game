@@ -1,4 +1,4 @@
-function spikes() {
+function spikes(width, height) {
 	this.x = width;
 	this.width = 20;
 	this.speed = floor.speed;

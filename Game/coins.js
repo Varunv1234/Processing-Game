@@ -13,6 +13,8 @@ function coins() {
 			return false;
 		};
 	};
+	};
+};
 	this.show = function(){
 		fill(245, 230, 66);
 		ellipse(this.x, this.y + 16, 16, 16);
