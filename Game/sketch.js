@@ -1,16 +1,16 @@
 
-var floor = new floor(this.width, this.height);
-var person = new person(this.width, this.height, floor.x, floor.y, floor.width);
-var spikes = new spikes(this.width, this.height);
+var floors = new floor(500, 500);
+var person = new person(500, 500, floor.x, floor.y, floor.width);
+var spikes = new spikes(500, 500);
 var floorsdict = [];
 var spikesdict = [];
 var coinsdict = [];
-var check = floor.check();
-console.log(check);
+var check = floors.show();
 
 //function offscreen1() {
   //return ;
 //}
+console.log(check);
 
 function update1(i) {
   floorsdict[i].update();
@@ -35,7 +35,9 @@ function getRandomInt(max) {
 
 function setup() {
   createCanvas(displayWidth - 200, displayHeight - 200);
-  floorsdict.push(floor);
+  floorsdict.push(floors);
+  console.log(floors);
+  console.log(floorsdict[0].width);
 }
 
 /*
@@ -43,13 +45,6 @@ console.log(floorsdict[0].x);
 floorsdict[0].update();
 console.log(floorsdict[0].x);
 */
-function pushNewFloor(i) {
-    if (check == true) {
-      floorsdict.push(floor);
-    }
-    floorsdict[i].update();
-    floorsdict[i].show();
-  }
 
 function pushNewSpike(i) {
     if (seconds % (getRandomInt(4) + 1) == 0) {
@@ -58,6 +53,17 @@ function pushNewSpike(i) {
     spikesdict[i].update();
     spikesdict[i].show();
   }
+
+function pushNewFloor(i) {
+    if (check == true) {
+      floorsdict.push(floor);
+    }
+    floorsdict[i].show();
+
+    floorsdict[i].update();
+    }
+
+
 function showPerson() {
   person.update();
   person.show();

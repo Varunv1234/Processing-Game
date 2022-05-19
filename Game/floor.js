@@ -7,6 +7,13 @@ function floor(width, height) {
   this.backward1 = -5;
   this.x = width - this.width;
 
+  this.show = function() {
+    this.x -= this.speed;
+    this.width -= this.speed;
+    fill(0);
+    rect(this.x, this.y, this.x + this.width, height);
+  };
+
   this.forward = function(){
     this.x += this.forward1;
     return this.forward1;
@@ -27,14 +34,9 @@ function floor(width, height) {
   };
   };
 
-  this.show = function() {
-    fill(0);
-    rect(this.x, this.y, this.x + this.width, height);
-  };
-
-  this.update = function() {
+  this.test = function() {
     this.x -= this.speed;
-    //this.width -= this.speed;
+    this.width -= this.speed;
   };
 
 
