@@ -15,11 +15,12 @@ function coins() {
 	};
 	};
 };
+/*
 	this.show = function(){
 		fill(245, 230, 66);
 		ellipse(this.x, this.y + 16, 16, 16);
 	};
-	
+	*/
 	this.update = function() {
 		this.x -= this.speed;
 	};

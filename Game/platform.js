@@ -6,12 +6,12 @@ function platform(){
 	this.y = Math.random(height/3,height/2);
 	
 	this.var2 = this.x + this.width;
-
+/*
 	this.show = function(){
 		fill(0);
 		rect(this.x,this.y+this.height, this.x + this.width, this.y);
 	};
-
+*/
 	this.update = function(){
 		this.x -= this.speed
 	};

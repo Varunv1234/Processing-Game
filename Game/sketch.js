@@ -1,7 +1,5 @@
-var widthM = displayWidth - 200
-var heightM = displayHeight -200
-
-
+var widthM = screen.width - 200;
+var heightM = screen.height -200;
 
 
 var floors = new floor(widthM, heightM);
@@ -10,16 +8,12 @@ var spikes = new spikes(widthM, heightM);
 var floorsdict = [];
 var spikesdict = [];
 var coinsdict = [];
-//var check = floors.show();
 
 //function offscreen1() {
   //return ;
 //}
-console.log(check);
+console.log(floors.show());
 
-function update1(i) {
-  floorsdict[i].update();
-}
 
 var minutes = 0
 var seconds = 0
@@ -33,17 +27,14 @@ function setTime() {
   
 }
 
-
-
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
 function setup() {
-  createCanvas(widthM, heightM);
-  floorsdict.push(floors);
-  //console.log(floors);
-  //console.log(floorsdict[0].width);
+  createCanvas(displayWidth - 200, displayHeight - 200);
+  floorsdict.push(floor);
+  spikesdict.push(spikes);
 }
 
 /*
@@ -54,27 +45,38 @@ console.log(floorsdict[0].x);
 
 function pushNewSpike(i) {
     if (seconds % (getRandomInt(4) + 1) == 0) {
-      spikesdict.push(floor);
+      spikesdict.push(spikes);
     };
-    spikesdict[i].update();
-    spikesdict[i].show();
+    console.log(spikesdict);
+
+    spikesdict[0].update();
+    spikesdict[0].show();
   }
 
 function pushNewFloor(i) {
-    if (check == true) {
-      floorsdict.push(floor);
+    if (floors.check() == true) {
+      floorsdict.push(floors);
+      spikesdict.push(spikes);
     }
-    fill(0);
-    rect(floor.x, floor.y, floor.x + floor.width, height);
-    floorsdict[i].update();
+    console.log(floorsdict);
+    console.log(i);
+    floorsdict[0].show();
+    floorsdict[0].update();
     }
 
-
+//
 function showPerson() {
-  person.update();
-  person.show();
+  fill(0);
+  ellipse(person.x, person.y, 32, 32);
 }
-
+function showSpike() {
+  fill(0);
+  triangle(spikes.x, 3*height/5, (spikes.var2+spikes.x)/2, 3*height/5-10, spikes.var2, 3*height/5);
+}
+function showFloor() {
+  fill(0);
+  rect(floor.x, floor.y, floor.x + floor.width, height);
+}
 
 
 
@@ -82,28 +84,70 @@ function draw() {
   background(0);
   fill(255);
   rect(0, 3*height/5, width, height);
-  
+  function hitspike(){
+  while (seconds >= 1) {
+    if (spikes.hitperson(person.x , person.y) == true){
+      return true;
+    }
+    else {
+      return false;
+    };
+  }
+}
+    
+  //check if alive
+
+  function gameOngoing() {
+  if (person.alive() == false || hitspike() == true) {
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+
+  //adds more items
   for (var i = floorsdict.length; i >= 0; i--) {
-    pushNewFloor(i);
+    if (second % 3 == 0) {
+      //create new floor every 3 seconds
+      floorsdict.push(floors);
+    }
   };
 
   for (var i = spikesdict.length; i >= 0; i--) {
-    pushNewSpike(i);
+      if (second % getRandomInt(3) == 0) {
+        spikesdict.push(spikes);
+      }
+
   };
 
-  while (seconds >= 1) {
-    if (seconds % 1 == 0){
+    //update / show items
+  while (gameOngoing() == true){
+    for (var i = floorsdict.length; i >= 0; i--) {
+      floorsdict[i].update();
+      showFloor();
+    }
+
+    person.update();
     showPerson();
-  };
+
+    for (var i = spikesdict.length; i >= 0; i--) {
+      spikesdict[i].update();
+
+    }
   }
 
-  if (person.alive() == true || spikes.hitperson() == true) {
+
+
+  if (gameOngoing() == false) {
     textSize(100);
-    text('Game Over', height/2, width/2);
+    text('Game Over', heightM/2, widthM/2);
   }
     
 }
 
+//register key inputs
 function keyPressed() {
   if (key == '') {
     person.up();

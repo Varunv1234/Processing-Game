@@ -6,14 +6,11 @@ function floor(width, height) {
   this.forward1 = 5;
   this.backward1 = -5;
   this.x = width - this.width;
-/*
+
   this.show = function() {
     this.x -= this.speed;
     this.width -= this.speed;
-    fill(0);
-    rect(this.x, this.y, this.x + this.width, height);
   };
-*/
 
   this.forward = function(){
     this.x += this.forward1;
