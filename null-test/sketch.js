@@ -33,9 +33,11 @@ function getRandomInt(max) {
 
 function setup() {
   createCanvas(displayWidth - 200, displayHeight - 200);
-  floorsdict.push(floor);
-  spikesdict.push(spikes);
+  floorsdict.push(floors);
+  spikesdict.push(spikes);33333343243423243243242324324324334323423243223432342
 }
+
+
 
 /*
 console.log(floorsdict[0].x);
@@ -49,8 +51,8 @@ function pushNewSpike(i) {
     };
     console.log(spikesdict);
 
-    spikesdict[0].update();
-    spikesdict[0].show();
+    spikesdict[i].update();
+    spikesdict[i].show();
   }
 
 function pushNewFloor(i) {
@@ -60,8 +62,8 @@ function pushNewFloor(i) {
     }
     console.log(floorsdict);
     console.log(i);
-    floorsdict[0].show();
-    floorsdict[0].update();
+    floorsdict[i].show();
+    floorsdict[i].update();
     }
 
 //
