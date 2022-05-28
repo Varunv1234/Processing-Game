@@ -48,7 +48,7 @@ function draw() {
     coins[i].show();
     coins[i].update();
 
-    if (coins[i].hits(bird) == true) {
+    if (coins[i].hits(bird) == true && bird.gameongoingmain() == true) {
       coinsnum += 1;
     }
       
@@ -69,6 +69,7 @@ function draw() {
     //gameongoing = false;
     stop()
      textSize(100);
+     var fullscore = totalSeconds + coinsnum;
       var score = String('Your Score Was' + ' ' +  totalSeconds + ', '  + coinsnum);
       text(score, widthM/3 - 200, heightM/2);
   }

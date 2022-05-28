@@ -8,11 +8,12 @@ function Floor() {
   this.top = height/3;
   this.bottom = height - (this.top + this.spacing);
   this.x = width;
-  this.w = random(width/12,width/6);
-  this.speed = 6 * (1+totalSeconds/500);
+  this.w = random(width/12,width/9);
+  //speeds up with time
+  this.speed = 6 * (1+totalSeconds/200);
 
   this.highlight = false;
-
+  //collision detection from collideP5 (downloaded from github)
   this.hits = function(bird) {
     hit = collideRectCircle(this.x, height - this.bottom, this.w, this.bottom, bird.x, bird.y, 32);
     if (hit == true){

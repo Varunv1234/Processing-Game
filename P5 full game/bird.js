@@ -8,7 +8,7 @@ function Bird() {
   this.x = width / 2;
 
   this.gravity = 0.7;
-  this.lift = -30;
+  this.lift = -height/30;
   this.velocity = 0;
   this.gameongoing = true;
   this.numjumps = 3;
