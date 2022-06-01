@@ -70,7 +70,7 @@ function draw() {
     stop()
      textSize(100);
      var fullscore = totalSeconds + coinsnum;
-      var score = String('Your Score Was' + ' ' +  totalSeconds + ', '  + coinsnum);
+      var score = String('Your Score Was' + ' ' +  fullscore);
       text(score, widthM/3 - 200, heightM/2);
   }
 

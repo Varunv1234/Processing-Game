@@ -6,12 +6,13 @@ function Coins() {
   this.w = random(width/12,width/8);
   this.speed = 6;
   this.coinsnum = 0;
+  this.clicked = false;
 
   this.highlight = false;
 
   this.hits = function(bird) {
     hit = collideCircleCircle(bird.x, bird.y, 32, this.x, this.y, 32);
-    if (hit==true) {
+    if (hit==true && this.clicked == false) {
       return true;
     }
     else {
